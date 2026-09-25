@@ -2,7 +2,7 @@ name: Check & Update Visa Bulletin
 
 on:
   schedule:
-    # Runs daily at 14:00 UTC between days 8 to 18 of every month
+    # Runs daily at 14:00 UTC between days 8 and 18 of every month
     - cron: '0 14 8-18 * *'
   workflow_dispatch:
 
