@@ -16,7 +16,7 @@
 </head>
 <body class="bg-slate-50 text-slate-800 antialiased min-h-screen flex flex-col">
 
-  <!-- Top Navigation -->
+  <!-- Navigation -->
   <header class="bg-slate-900 border-b border-slate-800 sticky top-0 z-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
       <div class="flex items-center space-x-3">
@@ -25,12 +25,12 @@
         </div>
         <div>
           <span class="text-lg font-bold tracking-tight text-white block leading-tight">VisaBulletin<span class="text-blue-500">Pulse</span></span>
-          <span class="text-[10px] uppercase tracking-wider text-slate-400 font-semibold">Official Analytics & Forecasting</span>
+          <span class="text-[10px] uppercase tracking-wider text-slate-400 font-semibold">Autonomous Analytics & Forecasting</span>
         </div>
       </div>
       <nav class="hidden md:flex items-center space-x-6 text-sm font-medium text-slate-300">
         <a href="#bulletin" class="hover:text-blue-400 transition-colors">Visa Bulletin</a>
-        <a href="#ai-insights" class="hover:text-blue-400 transition-colors">AI Forecasts</a>
+        <a href="#ai-insights" class="hover:text-blue-400 transition-colors">AI Analysis</a>
         <a href="#projections" class="hover:text-blue-400 transition-colors">Annual Projections</a>
         <a href="#cspa" class="hover:text-blue-400 transition-colors">CSPA Calculator</a>
         <a href="#processing" class="hover:text-blue-400 transition-colors">USCIS Processing</a>
@@ -38,7 +38,7 @@
       </nav>
       <div class="flex items-center space-x-3">
         <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-emerald-950 text-emerald-400 border border-emerald-800/60">
-          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 mr-1.5 animate-pulse"></span> DOS Live Sync
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 mr-1.5 animate-pulse"></span> Auto-Sync Active
         </span>
       </div>
     </div>
@@ -54,18 +54,17 @@
         US Visa Bulletin Projections & Smart Immigration Tools
       </h1>
       <p class="text-base sm:text-lg text-slate-300 max-w-3xl mx-auto leading-relaxed">
-        Track official Department of State cut-off dates, review autonomous AI movement forecasts, calculate Child Status Protection Act (CSPA) age limits, and estimate exact USCIS filing fees.
+        Live Department of State cut-off dates, predictive machine learning movement forecasts, Child Status Protection Act (CSPA) age calculations, and USCIS fee estimations.
       </p>
 
-      <!-- Key Bulletin Status Banner -->
       <div class="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl mx-auto">
         <div class="bg-slate-800/60 backdrop-blur border border-slate-700/60 rounded-2xl p-4 text-center">
           <span class="text-xs uppercase tracking-wider text-slate-400 font-semibold block mb-1">Active Visa Bulletin</span>
           <span id="active-month" class="text-lg font-bold text-white">Loading...</span>
         </div>
         <div class="bg-slate-800/60 backdrop-blur border border-slate-700/60 rounded-2xl p-4 text-center">
-          <span class="text-xs uppercase tracking-wider text-slate-400 font-semibold block mb-1">Next Bulletin Release</span>
-          <span id="next-release" class="text-lg font-bold text-blue-400">Loading...</span>
+          <span class="text-xs uppercase tracking-wider text-slate-400 font-semibold block mb-1">Next Expected Release</span>
+          <span id="next-release" class="text-lg font-bold text-blue-400">Mid-Month</span>
         </div>
         <div class="bg-slate-800/60 backdrop-blur border border-slate-700/60 rounded-2xl p-4 text-center">
           <span class="text-xs uppercase tracking-wider text-slate-400 font-semibold block mb-1">USCIS Filing Chart</span>
@@ -78,7 +77,7 @@
   <!-- Main Content Body -->
   <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-16 flex-grow">
 
-    <!-- Section 1: Visa Bulletin Cut-Off Dates -->
+    <!-- Section 1: Official Visa Bulletin Table -->
     <section id="bulletin" class="scroll-mt-20">
       <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
         <div>
@@ -87,7 +86,6 @@
           </h2>
           <p class="text-sm text-slate-500 mt-1">Directly synchronized with official Department of State records (Rest of World / Non-Limited Chargeability).</p>
         </div>
-        <!-- Table Toggle -->
         <div class="inline-flex p-1 bg-slate-200/80 rounded-xl text-xs font-semibold">
           <button id="btn-family" onclick="switchCategory('family')" class="px-4 py-2 rounded-lg bg-white text-slate-900 shadow-sm transition-all">Family-Sponsored</button>
           <button id="btn-employment" onclick="switchCategory('employment')" class="px-4 py-2 rounded-lg text-slate-600 hover:text-slate-900 transition-all">Employment-Based</button>
@@ -106,14 +104,14 @@
               </tr>
             </thead>
             <tbody id="bulletin-table-body" class="divide-y divide-slate-100">
-              <!-- Dynamically populated via JS -->
+              <!-- Rendered via JavaScript -->
             </tbody>
           </table>
         </div>
       </div>
     </section>
 
-    <!-- Section 2: AI Predictive Intelligence -->
+    <!-- Section 2: AI Predictive Analysis -->
     <section id="ai-insights" class="scroll-mt-20">
       <div class="mb-6">
         <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-indigo-50 border border-indigo-100 text-indigo-700 text-xs font-semibold mb-2">
@@ -124,11 +122,11 @@
       </div>
 
       <div id="ai-insights-grid" class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <!-- Dynamically populated via JS -->
+        <!-- Rendered via JavaScript -->
       </div>
     </section>
 
-    <!-- Section 3: 12-Month Projections Engine -->
+    <!-- Section 3: Upcoming Progression Forecaster -->
     <section id="projections" class="scroll-mt-20">
       <div class="mb-6">
         <h2 class="text-2xl font-bold text-slate-900 tracking-tight flex items-center gap-2">
@@ -141,7 +139,7 @@
         <div class="max-w-md mb-6">
           <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">Select Preference Category</label>
           <select id="proj-selector" onchange="generateProjections()" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-sm font-semibold text-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
-            <!-- Dynamically populated -->
+            <!-- Rendered via JavaScript -->
           </select>
         </div>
 
@@ -156,7 +154,7 @@
               </tr>
             </thead>
             <tbody id="projection-table-body" class="divide-y divide-slate-100">
-              <!-- Dynamically populated -->
+              <!-- Rendered via JavaScript -->
             </tbody>
           </table>
         </div>
@@ -176,7 +174,6 @@
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <!-- Input Form -->
         <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm lg:col-span-2 space-y-4">
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
@@ -201,7 +198,6 @@
           </button>
         </div>
 
-        <!-- Result Card -->
         <div id="cspa-result-card" class="bg-slate-900 text-white rounded-2xl p-6 flex flex-col justify-center items-center text-center">
           <div class="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center text-blue-400 mb-3">
             <i class="fa-solid fa-calculator text-xl"></i>
@@ -215,7 +211,7 @@
       </div>
     </section>
 
-    <!-- Section 5: USCIS Processing Times -->
+    <!-- Section 5: USCIS Processing Durations -->
     <section id="processing" class="scroll-mt-20">
       <div class="mb-6">
         <h2 class="text-2xl font-bold text-slate-900 tracking-tight flex items-center gap-2">
@@ -236,14 +232,14 @@
               </tr>
             </thead>
             <tbody id="processing-table-body" class="divide-y divide-slate-100">
-              <!-- Dynamically populated via JS -->
+              <!-- Rendered via JavaScript -->
             </tbody>
           </table>
         </div>
       </div>
     </section>
 
-    <!-- Section 6: USCIS Fee Calculator (Form G-1055) -->
+    <!-- Section 6: USCIS Fee Calculator -->
     <section id="forms" class="scroll-mt-20">
       <div class="mb-6">
         <h2 class="text-2xl font-bold text-slate-900 tracking-tight flex items-center gap-2">
@@ -253,14 +249,12 @@
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <!-- Checklist Selector -->
         <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm lg:col-span-2 space-y-4">
           <div class="space-y-3" id="fee-forms-list">
-            <!-- Dynamically populated checkboxes -->
+            <!-- Rendered via JavaScript -->
           </div>
         </div>
 
-        <!-- Total Breakdown Card -->
         <div class="bg-slate-900 text-white rounded-2xl p-6 flex flex-col justify-between">
           <div>
             <span class="text-xs uppercase tracking-wider text-slate-400 font-semibold block mb-1">Total Official Fees</span>
@@ -285,92 +279,41 @@
       <p class="max-w-2xl mx-auto text-slate-500">
         Disclaimer: This platform provides data compilations and statistical projections based on public USCIS and Department of State records. It is not affiliated with the U.S. Government and does not provide legal representation.
       </p>
-      <p class="text-slate-600">&copy; <span id="year-copy"></span> All rights reserved. Built with GitHub Pages & Actions.</p>
+      <p class="text-slate-600">&copy; <span id="year-copy"></span> All rights reserved. Automated via GitHub Actions.</p>
     </div>
   </footer>
 
-  <!-- Core JavaScript Logic -->
+  <!-- Main JavaScript Logic -->
   <script>
     document.getElementById('year-copy').textContent = new Date().getFullYear();
 
     let bulletinData = null;
     let currentCategory = 'family';
 
-    const fallbackData = {
-      "bulletin_month": "October 2026",
-      "next_release_expected": "November 8 - 14, 2026",
-      "ai_insights": [
-        {
-          "category": "F2A (Spouses & Minor Children of LPRs)",
-          "trend": "Bullish (Rapid Movement)",
-          "summary": "Renewed fiscal year quota allocations have accelerated both Chart A and Chart B. Strong momentum expected to continue through Q1 of FY 2027.",
-          "actionable_tip": "If your priority date is prior to September 2025, prepare I-485 and civil documents immediately under Dates for Filing."
-        },
-        {
-          "category": "EB-2 / EB-3 (Professionals & NIW)",
-          "trend": "Steady Progression",
-          "summary": "Healthy quarterly worldwide numbers are moving cut-offs forward by roughly 20-30 days per month for non-backlogged countries.",
-          "actionable_tip": "Audit underlying I-140 approval notices and confirm medical exams (I-693) are ready for RFE response or concurrent submission."
-        },
-        {
-          "category": "EB-1 (Priority Workers)",
-          "trend": "Current (Available)",
-          "summary": "Worldwide EB-1 demand remains fully within statutory caps, keeping cut-off dates completely Current with negligible retrogression risk.",
-          "actionable_tip": "Applicants may execute simultaneous concurrent I-140/I-485 filings at any time."
-        },
-        {
-          "category": "F4 (Siblings of U.S. Citizens)",
-          "trend": "High Retrogression Risk",
-          "summary": "Massive global historical demand creates an extensive processing backlog, resulting in stagnant or minimal multi-month progression.",
-          "actionable_tip": "Ensure derivative children nearing age 21 are monitored closely under the CSPA rules to avoid aging out."
-        }
-      ],
-      "family_based": {
-        "F1": { "name": "F1 - Unmarried Sons and Daughters of U.S. Citizens", "final_action_date": "2016-11-22", "filing_date": "2018-04-01", "monthly_velocity_days": 14, "status": "Moderate Pace" },
-        "F2A": { "name": "F2A - Spouses and Children of Permanent Residents", "final_action_date": "2023-01-01", "filing_date": "2025-09-01", "monthly_velocity_days": 45, "status": "Rapid Forward Movement" },
-        "F2B": { "name": "F2B - Unmarried Sons/Daughters of LPRs (21+)", "final_action_date": "2017-06-15", "filing_date": "2018-05-01", "monthly_velocity_days": 10, "status": "Slow / Steady" },
-        "F3": { "name": "F3 - Married Sons and Daughters of U.S. Citizens", "final_action_date": "2011-09-01", "filing_date": "2012-10-15", "monthly_velocity_days": 7, "status": "Slow Pace" },
-        "F4": { "name": "F4 - Brothers and Sisters of Adult U.S. Citizens", "final_action_date": "2008-08-01", "filing_date": "2009-04-01", "monthly_velocity_days": 0, "status": "Backlogged" }
-      },
-      "employment_based": {
-        "EB1": { "name": "EB-1 - Priority Workers & Extraordinary Ability", "final_action_date": "Current", "filing_date": "Current", "monthly_velocity_days": 0, "status": "Current (Available)" },
-        "EB2": { "name": "EB-2 - Advanced Degree / National Interest Waiver", "final_action_date": "2024-06-15", "filing_date": "2024-11-01", "monthly_velocity_days": 21, "status": "Steady Movement" },
-        "EB3": { "name": "EB-3 - Skilled Workers & Professionals", "final_action_date": "2024-01-15", "filing_date": "2024-06-01", "monthly_velocity_days": 30, "status": "Moderate Pace" },
-        "EB3_Other": { "name": "EB-3 Other Workers (Unskilled)", "final_action_date": "2021-12-01", "filing_date": "2022-04-01", "monthly_velocity_days": 0, "status": "Stable / Backlogged" },
-        "EB4": { "name": "EB-4 - Special Immigrants & Religious Workers", "final_action_date": "2022-01-01", "filing_date": "2022-05-01", "monthly_velocity_days": 0, "status": "Stable" },
-        "EB5_Unreserved": { "name": "EB-5 - Immigrant Investors (Unreserved)", "final_action_date": "Current", "filing_date": "Current", "monthly_velocity_days": 0, "status": "Current" }
-      },
-      "processing_times": [
-        { "form": "I-130", "category": "Spouse of Permanent Resident (F2A)", "center": "Texas Service Center", "months": 31 },
-        { "form": "I-130", "category": "Spouse of U.S. Citizen (IR1/CR1)", "center": "Nebraska Service Center", "months": 13.5 },
-        { "form": "I-140", "category": "EB-2 NIW (National Interest Waiver)", "center": "Texas Service Center", "months": 10.5 },
-        { "form": "I-485", "category": "Adjustment of Status (Family-based)", "center": "National Benefits Center", "months": 9.5 },
-        { "form": "I-765", "category": "Employment Authorization (c)(9)", "center": "All Service Centers (Average)", "months": 3.5 },
-        { "form": "I-131", "category": "Advance Parole Travel Document", "center": "Nebraska / Texas", "months": 7.5 }
-      ],
-      "forms_fees": [
-        { "code": "I-130", "name": "Petition for Alien Relative (Online Filing)", "fee": 625 },
-        { "code": "I-140", "name": "Immigrant Petition for Alien Worker", "fee": 715 },
-        { "code": "I-485", "name": "Application to Register Permanent Residence / AOS", "fee": 1440 },
-        { "code": "I-765", "name": "Application for Employment Authorization", "fee": 520 },
-        { "code": "I-131", "name": "Application for Travel Document (Advance Parole)", "fee": 630 }
-      ]
-    };
-
     async function loadData() {
       try {
-        const res = await fetch('data/current_bulletin.json');
+        // Cache bust query to ensure live data is always fetched
+        const res = await fetch('data/current_bulletin.json?t=' + new Date().getTime());
         if (!res.ok) throw new Error();
         bulletinData = await res.json();
       } catch (err) {
-        bulletinData = fallbackData;
+        console.warn("Could not load current_bulletin.json, initializing structure.");
+        bulletinData = {
+          "bulletin_month": "Synchronizing...",
+          "next_release_expected": "Mid-Month",
+          "ai_insights": [],
+          "family_based": {},
+          "employment_based": {},
+          "processing_times": [],
+          "forms_fees": []
+        };
       }
       initUI();
     }
 
     function initUI() {
       document.getElementById('active-month').textContent = bulletinData.bulletin_month || "October 2026";
-      document.getElementById('next-release').textContent = bulletinData.next_release_expected || "November 8 - 14, 2026";
+      document.getElementById('next-release').textContent = bulletinData.next_release_expected || "Mid-Month";
       renderBulletinTable();
       renderAIInsights();
       initProjectionSelector();
@@ -398,7 +341,7 @@
       tbody.innerHTML = '';
       const dataSet = currentCategory === 'family' ? bulletinData.family_based : bulletinData.employment_based;
 
-      for (const [key, item] of Object.entries(dataSet)) {
+      for (const [key, item] of Object.entries(dataSet || {})) {
         const tr = document.createElement('tr');
         tr.className = "hover:bg-slate-50/80 transition-colors";
         tr.innerHTML = `
@@ -406,8 +349,8 @@
           <td class="py-4 px-6 font-mono font-medium ${item.final_action_date === 'Current' ? 'text-emerald-600 font-bold' : 'text-slate-700'}">${item.final_action_date}</td>
           <td class="py-4 px-6 font-mono font-medium ${item.filing_date === 'Current' ? 'text-emerald-600 font-bold' : 'text-slate-700'}">${item.filing_date}</td>
           <td class="py-4 px-6">
-            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${item.status.includes('Rapid') || item.status.includes('Current') ? 'bg-emerald-50 text-emerald-700 border border-emerald-200' : 'bg-slate-100 text-slate-700 border border-slate-200'}">
-              ${item.status}
+            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${item.status && (item.status.includes('Rapid') || item.status.includes('Current')) ? 'bg-emerald-50 text-emerald-700 border border-emerald-200' : 'bg-slate-100 text-slate-700 border border-slate-200'}">
+              ${item.status || 'Active'}
             </span>
           </td>
         `;
@@ -420,7 +363,11 @@
       if (!container) return;
       container.innerHTML = '';
       
-      const insights = bulletinData.ai_insights || fallbackData.ai_insights || [];
+      const insights = bulletinData.ai_insights || [];
+      if (insights.length === 0) {
+        container.innerHTML = `<div class="col-span-2 p-6 bg-white border border-slate-200 rounded-2xl text-center text-slate-500 text-xs">AI analysis is updating with the latest bulletin cycle...</div>`;
+        return;
+      }
       
       insights.forEach(item => {
         const card = document.createElement('div');
@@ -429,7 +376,7 @@
           <div>
             <div class="flex items-center justify-between mb-3">
               <span class="font-bold text-slate-900 text-sm">${item.category}</span>
-              <span class="text-xs px-2.5 py-0.5 rounded-full font-semibold ${item.trend.includes('Bullish') || item.trend.includes('Rapid') ? 'bg-emerald-50 text-emerald-700 border border-emerald-200' : 'bg-blue-50 text-blue-700 border border-blue-200'}">
+              <span class="text-xs px-2.5 py-0.5 rounded-full font-semibold ${item.trend.includes('Bullish') || item.trend.includes('Rapid') || item.trend.includes('Current') ? 'bg-emerald-50 text-emerald-700 border border-emerald-200' : 'bg-blue-50 text-blue-700 border border-blue-200'}">
                 ${item.trend}
               </span>
             </div>
@@ -451,7 +398,7 @@
       const appendGroup = (label, dataSet) => {
         const group = document.createElement('optgroup');
         group.label = label;
-        for (const [key, item] of Object.entries(dataSet)) {
+        for (const [key, item] of Object.entries(dataSet || {})) {
           const opt = document.createElement('option');
           opt.value = key;
           opt.textContent = item.name;
@@ -468,20 +415,28 @@
 
     function generateProjections() {
       const key = document.getElementById('proj-selector').value;
-      const item = bulletinData.family_based[key] || bulletinData.employment_based[key];
+      const item = (bulletinData.family_based && bulletinData.family_based[key]) || 
+                   (bulletinData.employment_based && bulletinData.employment_based[key]);
       const tbody = document.getElementById('projection-table-body');
       tbody.innerHTML = '';
 
       if (!item) return;
 
       if (item.final_action_date === 'Current') {
-        tbody.innerHTML = `<tr><td colspan="4" class="py-6 text-center text-emerald-600 font-semibold">Category is currently available (Current). Expected to remain open.</td></tr>`;
+        tbody.innerHTML = `<tr><td colspan="4" class="py-6 text-center text-emerald-600 font-semibold">Category is currently available (Current). Expected to remain open without backlogs.</td></tr>`;
         return;
       }
 
       let currentDate = new Date(item.final_action_date);
-      const velocity = item.monthly_velocity_days || 10;
-      const monthNames = ["Nov 2026", "Dec 2026", "Jan 2027", "Feb 2027", "Mar 2027", "Apr 2027"];
+      const velocity = item.monthly_velocity_days || 15;
+      
+      // Calculate upcoming 6 calendar months dynamically from current date
+      const monthNames = [];
+      const now = new Date();
+      for (let i = 1; i <= 6; i++) {
+        const future = new Date(now.getFullYear(), now.getMonth() + i, 1);
+        monthNames.push(future.toLocaleString('en-US', { month: 'short', year: 'numeric' }));
+      }
 
       monthNames.forEach((m, idx) => {
         currentDate.setDate(currentDate.getDate() + velocity);
@@ -550,7 +505,7 @@
     function renderProcessingTable() {
       const tbody = document.getElementById('processing-table-body');
       tbody.innerHTML = '';
-      bulletinData.processing_times.forEach(row => {
+      (bulletinData.processing_times || []).forEach(row => {
         const tr = document.createElement('tr');
         tr.className = "hover:bg-slate-50 transition-colors";
         tr.innerHTML = `
@@ -566,7 +521,7 @@
     function renderFeeCalculator() {
       const container = document.getElementById('fee-forms-list');
       container.innerHTML = '';
-      const forms = bulletinData.forms_fees || fallbackData.forms_fees;
+      const forms = bulletinData.forms_fees || [];
 
       forms.forEach((form) => {
         const div = document.createElement('label');
