@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>US Visa Bulletin Tracker, Projections & CSPA Calculator</title>
+  <title>US Visa Bulletin Tracker, AI Projections & CSPA Calculator</title>
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
@@ -30,6 +30,7 @@
       </div>
       <nav class="hidden md:flex items-center space-x-6 text-sm font-medium text-slate-300">
         <a href="#bulletin" class="hover:text-blue-400 transition-colors">Visa Bulletin</a>
+        <a href="#ai-insights" class="hover:text-blue-400 transition-colors">AI Forecasts</a>
         <a href="#projections" class="hover:text-blue-400 transition-colors">Annual Projections</a>
         <a href="#cspa" class="hover:text-blue-400 transition-colors">CSPA Calculator</a>
         <a href="#processing" class="hover:text-blue-400 transition-colors">USCIS Processing</a>
@@ -47,13 +48,13 @@
   <section class="bg-gradient-to-b from-slate-900 via-slate-850 to-slate-900 text-white py-14 px-4 sm:px-6 border-b border-slate-800">
     <div class="max-w-5xl mx-auto text-center">
       <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-semibold mb-4">
-        <i class="fa-solid fa-chart-line"></i> Next-Gen Immigration Analytics Engine
+        <i class="fa-solid fa-brain text-indigo-400"></i> Next-Gen AI Immigration Analytics Engine
       </div>
       <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight mb-4">
         US Visa Bulletin Projections & Smart Immigration Tools
       </h1>
       <p class="text-base sm:text-lg text-slate-300 max-w-3xl mx-auto leading-relaxed">
-        Track official Department of State cut-off dates, project upcoming monthly progression, calculate Child Status Protection Act (CSPA) age limits, and estimate exact USCIS filing fees.
+        Track official Department of State cut-off dates, review autonomous AI movement forecasts, calculate Child Status Protection Act (CSPA) age limits, and estimate exact USCIS filing fees.
       </p>
 
       <!-- Key Bulletin Status Banner -->
@@ -112,7 +113,22 @@
       </div>
     </section>
 
-    <!-- Section 2: 12-Month Projections Engine -->
+    <!-- Section 2: AI Predictive Intelligence -->
+    <section id="ai-insights" class="scroll-mt-20">
+      <div class="mb-6">
+        <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-indigo-50 border border-indigo-100 text-indigo-700 text-xs font-semibold mb-2">
+          <i class="fa-solid fa-brain text-indigo-600"></i> AI Predictive Intelligence
+        </div>
+        <h2 class="text-2xl font-bold text-slate-900 tracking-tight">AI Bulletin Analysis & Movement Forecasts</h2>
+        <p class="text-sm text-slate-500 mt-1">Autonomous analysis generated upon bulletin publication based on annual quotas, spillover trends, and USCIS pending inventory.</p>
+      </div>
+
+      <div id="ai-insights-grid" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <!-- Dynamically populated via JS -->
+      </div>
+    </section>
+
+    <!-- Section 3: 12-Month Projections Engine -->
     <section id="projections" class="scroll-mt-20">
       <div class="mb-6">
         <h2 class="text-2xl font-bold text-slate-900 tracking-tight flex items-center gap-2">
@@ -150,7 +166,7 @@
       </div>
     </section>
 
-    <!-- Section 3: CSPA Age-Out Calculator -->
+    <!-- Section 4: CSPA Age-Out Calculator -->
     <section id="cspa" class="scroll-mt-20">
       <div class="mb-6">
         <h2 class="text-2xl font-bold text-slate-900 tracking-tight flex items-center gap-2">
@@ -199,7 +215,7 @@
       </div>
     </section>
 
-    <!-- Section 4: USCIS Processing Times -->
+    <!-- Section 5: USCIS Processing Times -->
     <section id="processing" class="scroll-mt-20">
       <div class="mb-6">
         <h2 class="text-2xl font-bold text-slate-900 tracking-tight flex items-center gap-2">
@@ -220,14 +236,14 @@
               </tr>
             </thead>
             <tbody id="processing-table-body" class="divide-y divide-slate-100">
-              <!-- Dynamically populated -->
+              <!-- Dynamically populated via JS -->
             </tbody>
           </table>
         </div>
       </div>
     </section>
 
-    <!-- Section 5: USCIS Fee Calculator (Form G-1055) -->
+    <!-- Section 6: USCIS Fee Calculator (Form G-1055) -->
     <section id="forms" class="scroll-mt-20">
       <div class="mb-6">
         <h2 class="text-2xl font-bold text-slate-900 tracking-tight flex items-center gap-2">
@@ -283,6 +299,32 @@
     const fallbackData = {
       "bulletin_month": "October 2026",
       "next_release_expected": "November 8 - 14, 2026",
+      "ai_insights": [
+        {
+          "category": "F2A (Spouses & Minor Children of LPRs)",
+          "trend": "Bullish (Rapid Movement)",
+          "summary": "Renewed fiscal year quota allocations have accelerated both Chart A and Chart B. Strong momentum expected to continue through Q1 of FY 2027.",
+          "actionable_tip": "If your priority date is prior to September 2025, prepare I-485 and civil documents immediately under Dates for Filing."
+        },
+        {
+          "category": "EB-2 / EB-3 (Professionals & NIW)",
+          "trend": "Steady Progression",
+          "summary": "Healthy quarterly worldwide numbers are moving cut-offs forward by roughly 20-30 days per month for non-backlogged countries.",
+          "actionable_tip": "Audit underlying I-140 approval notices and confirm medical exams (I-693) are ready for RFE response or concurrent submission."
+        },
+        {
+          "category": "EB-1 (Priority Workers)",
+          "trend": "Current (Available)",
+          "summary": "Worldwide EB-1 demand remains fully within statutory caps, keeping cut-off dates completely Current with negligible retrogression risk.",
+          "actionable_tip": "Applicants may execute simultaneous concurrent I-140/I-485 filings at any time."
+        },
+        {
+          "category": "F4 (Siblings of U.S. Citizens)",
+          "trend": "High Retrogression Risk",
+          "summary": "Massive global historical demand creates an extensive processing backlog, resulting in stagnant or minimal multi-month progression.",
+          "actionable_tip": "Ensure derivative children nearing age 21 are monitored closely under the CSPA rules to avoid aging out."
+        }
+      ],
       "family_based": {
         "F1": { "name": "F1 - Unmarried Sons and Daughters of U.S. Citizens", "final_action_date": "2016-11-22", "filing_date": "2018-04-01", "monthly_velocity_days": 14, "status": "Moderate Pace" },
         "F2A": { "name": "F2A - Spouses and Children of Permanent Residents", "final_action_date": "2023-01-01", "filing_date": "2025-09-01", "monthly_velocity_days": 45, "status": "Rapid Forward Movement" },
@@ -330,6 +372,7 @@
       document.getElementById('active-month').textContent = bulletinData.bulletin_month || "October 2026";
       document.getElementById('next-release').textContent = bulletinData.next_release_expected || "November 8 - 14, 2026";
       renderBulletinTable();
+      renderAIInsights();
       initProjectionSelector();
       renderProcessingTable();
       renderFeeCalculator();
@@ -370,6 +413,35 @@
         `;
         tbody.appendChild(tr);
       }
+    }
+
+    function renderAIInsights() {
+      const container = document.getElementById('ai-insights-grid');
+      if (!container) return;
+      container.innerHTML = '';
+      
+      const insights = bulletinData.ai_insights || fallbackData.ai_insights || [];
+      
+      insights.forEach(item => {
+        const card = document.createElement('div');
+        card.className = "bg-white border border-slate-200 rounded-2xl p-5 shadow-sm flex flex-col justify-between hover:border-indigo-300 transition-all";
+        card.innerHTML = `
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span class="font-bold text-slate-900 text-sm">${item.category}</span>
+              <span class="text-xs px-2.5 py-0.5 rounded-full font-semibold ${item.trend.includes('Bullish') || item.trend.includes('Rapid') ? 'bg-emerald-50 text-emerald-700 border border-emerald-200' : 'bg-blue-50 text-blue-700 border border-blue-200'}">
+                ${item.trend}
+              </span>
+            </div>
+            <p class="text-xs text-slate-600 leading-relaxed mb-3">${item.summary}</p>
+          </div>
+          <div class="pt-3 border-t border-slate-100 flex items-start gap-2">
+            <i class="fa-solid fa-lightbulb text-amber-500 text-xs mt-0.5"></i>
+            <p class="text-[11px] text-slate-500 font-medium"><strong>Strategy:</strong> ${item.actionable_tip}</p>
+          </div>
+        `;
+        container.appendChild(card);
+      });
     }
 
     function initProjectionSelector() {
