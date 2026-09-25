@@ -2,7 +2,7 @@ name: Check, Parse & Generate AI Visa Bulletin
 
 on:
   schedule:
-    # Runs twice daily at 13:00 and 19:00 UTC between days 8 and 18 of each month
+    # Runs twice daily at 13:00 and 19:00 UTC between days 8 and 18 of every month
     - cron: '0 13,19 8-18 * *'
   workflow_dispatch:
 
