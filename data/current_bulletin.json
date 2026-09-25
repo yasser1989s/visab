@@ -1,0 +1,100 @@
+{
+  "bulletin_month": "October 2024",
+  "next_release_expected": "November 8 - 14, 2024",
+  "family_based": {
+    "F1": {
+      "name": "F1 - Unmarried Sons and Daughters of U.S. Citizens",
+      "final_action_date": "2015-10-22",
+      "filing_date": "2017-09-01",
+      "monthly_velocity_days": 14,
+      "status": "Moderate Pace"
+    },
+    "F2A": {
+      "name": "F2A - Spouses and Children of Permanent Residents",
+      "final_action_date": "2021-11-22",
+      "filing_date": "2024-07-15",
+      "monthly_velocity_days": 45,
+      "status": "Rapid Forward Movement"
+    },
+    "F2B": {
+      "name": "F2B - Unmarried Sons/Daughters of LPRs (21+)",
+      "final_action_date": "2016-05-01",
+      "filing_date": "2017-01-01",
+      "monthly_velocity_days": 0,
+      "status": "Stable / Unchanged"
+    },
+    "F3": {
+      "name": "F3 - Married Sons and Daughters of U.S. Citizens",
+      "final_action_date": "2010-04-01",
+      "filing_date": "2011-07-01",
+      "monthly_velocity_days": 10,
+      "status": "Slow Movement"
+    },
+    "F4": {
+      "name": "F4 - Brothers and Sisters of Adult U.S. Citizens",
+      "final_action_date": "2007-08-01",
+      "filing_date": "2008-03-01",
+      "monthly_velocity_days": 0,
+      "status": "Backlogged"
+    }
+  },
+  "employment_based": {
+    "EB1": {
+      "name": "EB-1 - Priority Workers & Extraordinary Ability",
+      "final_action_date": "Current",
+      "filing_date": "Current",
+      "monthly_velocity_days": 0,
+      "status": "Current (Available)"
+    },
+    "EB2": {
+      "name": "EB-2 - Advanced Degree / National Interest Waiver",
+      "final_action_date": "2023-03-15",
+      "filing_date": "2023-08-01",
+      "monthly_velocity_days": 15,
+      "status": "Steady Movement"
+    },
+    "EB3": {
+      "name": "EB-3 - Skilled Workers & Professionals",
+      "final_action_date": "2022-11-15",
+      "filing_date": "2023-03-01",
+      "monthly_velocity_days": 30,
+      "status": "Moderate Pace"
+    },
+    "EB3_Other": {
+      "name": "EB-3 Other Workers (Unskilled)",
+      "final_action_date": "2020-12-01",
+      "filing_date": "2021-01-01",
+      "monthly_velocity_days": 0,
+      "status": "Stable / Backlogged"
+    },
+    "EB4": {
+      "name": "EB-4 - Special Immigrants & Religious Workers",
+      "final_action_date": "2021-01-01",
+      "filing_date": "2021-02-01",
+      "monthly_velocity_days": 0,
+      "status": "Stable"
+    },
+    "EB5_Unreserved": {
+      "name": "EB-5 - Immigrant Investors (Unreserved)",
+      "final_action_date": "Current",
+      "filing_date": "Current",
+      "monthly_velocity_days": 0,
+      "status": "Current"
+    }
+  },
+  "processing_times": [
+    { "form": "I-130", "category": "Spouse of Permanent Resident (F2A)", "center": "Texas Service Center", "months": 34 },
+    { "form": "I-130", "category": "Spouse of U.S. Citizen (IR1/CR1)", "center": "Nebraska Service Center", "months": 14.5 },
+    { "form": "I-140", "category": "EB-2 NIW (National Interest Waiver)", "center": "Texas Service Center", "months": 11.5 },
+    { "form": "I-485", "category": "Adjustment of Status (Family-based)", "center": "National Benefits Center", "months": 10.5 },
+    { "form": "I-765", "category": "Employment Authorization (c)(9)", "center": "All Service Centers (Average)", "months": 4.5 },
+    { "form": "I-131", "category": "Advance Parole Travel Document", "center": "Nebraska / Texas", "months": 8.5 }
+  ],
+  "forms_fees": [
+    { "code": "I-130", "name": "Petition for Alien Relative (Online Filing)", "fee": 625 },
+    { "code": "I-140", "name": "Immigrant Petition for Alien Worker", "fee": 715 },
+    { "code": "I-485", "name": "Application to Register Permanent Residence / AOS", "fee": 1440 },
+    { "code": "I-765", "name": "Application for Employment Authorization", "fee": 520 },
+    { "code": "I-131", "name": "Application for Travel Document (Advance Parole)", "fee": 630 }
+  ]
+}
