@@ -9,10 +9,10 @@ DATA_FILE = "data/current_bulletin.json"
 
 def fetch_latest_bulletin():
     headers = {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36"
     }
     
-    print("[*] Checking Department of State website...")
+    print("[*] Connecting to Department of State Visa Bulletin portal...")
     try:
         response = requests.get(DOS_URL, headers=headers, timeout=15)
         response.raise_for_status()
@@ -21,17 +21,15 @@ def fetch_latest_bulletin():
         return
 
     soup = BeautifulSoup(response.text, "html.parser")
-    # Identify latest bulletin link
     latest_link = soup.find("a", string=lambda text: text and "visa bulletin for" in text.lower())
     
     if not latest_link:
-        print("[-] No new bulletin release identified.")
+        print("[-] No upcoming bulletin link identified.")
         return
 
     bulletin_title = latest_link.get_text(strip=True)
     print(f"[+] Active bulletin detected: {bulletin_title}")
 
-    # Read and update existing local JSON
     if os.path.exists(DATA_FILE):
         with open(DATA_FILE, "r", encoding="utf-8") as f:
             data = json.load(f)
