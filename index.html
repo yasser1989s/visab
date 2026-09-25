@@ -64,7 +64,7 @@
         </div>
         <div class="bg-slate-800/60 backdrop-blur border border-slate-700/60 rounded-2xl p-4 text-center">
           <span class="text-xs uppercase tracking-wider text-slate-400 font-semibold block mb-1">Next Bulletin Release</span>
-          <span id="next-release" class="text-lg font-bold text-blue-400">Mid-Month</span>
+          <span id="next-release" class="text-lg font-bold text-blue-400">Loading...</span>
         </div>
         <div class="bg-slate-800/60 backdrop-blur border border-slate-700/60 rounded-2xl p-4 text-center">
           <span class="text-xs uppercase tracking-wider text-slate-400 font-semibold block mb-1">USCIS Filing Chart</span>
@@ -116,9 +116,9 @@
     <section id="projections" class="scroll-mt-20">
       <div class="mb-6">
         <h2 class="text-2xl font-bold text-slate-900 tracking-tight flex items-center gap-2">
-          <i class="fa-solid fa-wand-magic-sparkles text-blue-600"></i> 12-Month Progression & Backlog Forecaster
+          <i class="fa-solid fa-wand-magic-sparkles text-blue-600"></i> Upcoming Progression & Backlog Forecaster
         </h2>
-        <p class="text-sm text-slate-500 mt-1">Select your category to view mathematical estimates of cut-off movement across upcoming quarters.</p>
+        <p class="text-sm text-slate-500 mt-1">Select your category to view mathematical estimates of cut-off movement across upcoming months.</p>
       </div>
 
       <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
@@ -181,7 +181,7 @@
             </div>
           </div>
           <button onclick="calculateCSPA()" class="w-full sm:w-auto px-6 py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-sm font-semibold transition-colors shadow-sm">
-            Calculate Calculated CSPA Age
+            Calculate CSPA Age
           </button>
         </div>
 
@@ -281,30 +281,30 @@
     let currentCategory = 'family';
 
     const fallbackData = {
-      "bulletin_month": "October 2024",
-      "next_release_expected": "November 8 - 14, 2024",
+      "bulletin_month": "October 2026",
+      "next_release_expected": "November 8 - 14, 2026",
       "family_based": {
-        "F1": { "name": "F1 - Unmarried Sons and Daughters of U.S. Citizens", "final_action_date": "2015-10-22", "filing_date": "2017-09-01", "monthly_velocity_days": 14, "status": "Moderate Pace" },
-        "F2A": { "name": "F2A - Spouses and Children of Permanent Residents", "final_action_date": "2021-11-22", "filing_date": "2024-07-15", "monthly_velocity_days": 45, "status": "Rapid Forward Movement" },
-        "F2B": { "name": "F2B - Unmarried Sons/Daughters of LPRs (21+)", "final_action_date": "2016-05-01", "filing_date": "2017-01-01", "monthly_velocity_days": 0, "status": "Stable / Unchanged" },
-        "F3": { "name": "F3 - Married Sons and Daughters of U.S. Citizens", "final_action_date": "2010-04-01", "filing_date": "2011-07-01", "monthly_velocity_days": 10, "status": "Slow Movement" },
-        "F4": { "name": "F4 - Brothers and Sisters of Adult U.S. Citizens", "final_action_date": "2007-08-01", "filing_date": "2008-03-01", "monthly_velocity_days": 0, "status": "Backlogged" }
+        "F1": { "name": "F1 - Unmarried Sons and Daughters of U.S. Citizens", "final_action_date": "2016-11-22", "filing_date": "2018-04-01", "monthly_velocity_days": 14, "status": "Moderate Pace" },
+        "F2A": { "name": "F2A - Spouses and Children of Permanent Residents", "final_action_date": "2023-01-01", "filing_date": "2025-09-01", "monthly_velocity_days": 45, "status": "Rapid Forward Movement" },
+        "F2B": { "name": "F2B - Unmarried Sons/Daughters of LPRs (21+)", "final_action_date": "2017-06-15", "filing_date": "2018-05-01", "monthly_velocity_days": 10, "status": "Slow / Steady" },
+        "F3": { "name": "F3 - Married Sons and Daughters of U.S. Citizens", "final_action_date": "2011-09-01", "filing_date": "2012-10-15", "monthly_velocity_days": 7, "status": "Slow Pace" },
+        "F4": { "name": "F4 - Brothers and Sisters of Adult U.S. Citizens", "final_action_date": "2008-08-01", "filing_date": "2009-04-01", "monthly_velocity_days": 0, "status": "Backlogged" }
       },
       "employment_based": {
-        "EB1": { "name": "EB-1 - Priority Workers & Extraordinary Ability", "final_action_date": "Current", "filing_date": "Current", "monthly_velocity_days": 0, "status": "Current (Fully Available)" },
-        "EB2": { "name": "EB-2 - Advanced Degree / National Interest Waiver", "final_action_date": "2023-03-15", "filing_date": "2023-08-01", "monthly_velocity_days": 15, "status": "Steady Movement" },
-        "EB3": { "name": "EB-3 - Skilled Workers & Professionals", "final_action_date": "2022-11-15", "filing_date": "2023-03-01", "monthly_velocity_days": 30, "status": "Moderate Pace" },
-        "EB3_Other": { "name": "EB-3 Other Workers (Unskilled)", "final_action_date": "2020-12-01", "filing_date": "2021-01-01", "monthly_velocity_days": 0, "status": "Stable / Backlogged" },
-        "EB4": { "name": "EB-4 - Special Immigrants & Religious Workers", "final_action_date": "2021-01-01", "filing_date": "2021-02-01", "monthly_velocity_days": 0, "status": "Stable" },
+        "EB1": { "name": "EB-1 - Priority Workers & Extraordinary Ability", "final_action_date": "Current", "filing_date": "Current", "monthly_velocity_days": 0, "status": "Current (Available)" },
+        "EB2": { "name": "EB-2 - Advanced Degree / National Interest Waiver", "final_action_date": "2024-06-15", "filing_date": "2024-11-01", "monthly_velocity_days": 21, "status": "Steady Movement" },
+        "EB3": { "name": "EB-3 - Skilled Workers & Professionals", "final_action_date": "2024-01-15", "filing_date": "2024-06-01", "monthly_velocity_days": 30, "status": "Moderate Pace" },
+        "EB3_Other": { "name": "EB-3 Other Workers (Unskilled)", "final_action_date": "2021-12-01", "filing_date": "2022-04-01", "monthly_velocity_days": 0, "status": "Stable / Backlogged" },
+        "EB4": { "name": "EB-4 - Special Immigrants & Religious Workers", "final_action_date": "2022-01-01", "filing_date": "2022-05-01", "monthly_velocity_days": 0, "status": "Stable" },
         "EB5_Unreserved": { "name": "EB-5 - Immigrant Investors (Unreserved)", "final_action_date": "Current", "filing_date": "Current", "monthly_velocity_days": 0, "status": "Current" }
       },
       "processing_times": [
-        { "form": "I-130", "category": "Spouse of Permanent Resident (F2A)", "center": "Texas Service Center", "months": 34 },
-        { "form": "I-130", "category": "Spouse of U.S. Citizen (IR1/CR1)", "center": "Nebraska Service Center", "months": 14.5 },
-        { "form": "I-140", "category": "EB-2 NIW (National Interest Waiver)", "center": "Texas Service Center", "months": 11.5 },
-        { "form": "I-485", "category": "Adjustment of Status (Family-based)", "center": "National Benefits Center", "months": 10.5 },
-        { "form": "I-765", "category": "Employment Authorization (c)(9)", "center": "All Service Centers (Average)", "months": 4.5 },
-        { "form": "I-131", "category": "Advance Parole Travel Document", "center": "Nebraska / Texas", "months": 8.5 }
+        { "form": "I-130", "category": "Spouse of Permanent Resident (F2A)", "center": "Texas Service Center", "months": 31 },
+        { "form": "I-130", "category": "Spouse of U.S. Citizen (IR1/CR1)", "center": "Nebraska Service Center", "months": 13.5 },
+        { "form": "I-140", "category": "EB-2 NIW (National Interest Waiver)", "center": "Texas Service Center", "months": 10.5 },
+        { "form": "I-485", "category": "Adjustment of Status (Family-based)", "center": "National Benefits Center", "months": 9.5 },
+        { "form": "I-765", "category": "Employment Authorization (c)(9)", "center": "All Service Centers (Average)", "months": 3.5 },
+        { "form": "I-131", "category": "Advance Parole Travel Document", "center": "Nebraska / Texas", "months": 7.5 }
       ],
       "forms_fees": [
         { "code": "I-130", "name": "Petition for Alien Relative (Online Filing)", "fee": 625 },
@@ -327,8 +327,8 @@
     }
 
     function initUI() {
-      document.getElementById('active-month').textContent = bulletinData.bulletin_month || "Active";
-      document.getElementById('next-release').textContent = bulletinData.next_release_expected || "Mid-Month";
+      document.getElementById('active-month').textContent = bulletinData.bulletin_month || "October 2026";
+      document.getElementById('next-release').textContent = bulletinData.next_release_expected || "November 8 - 14, 2026";
       renderBulletinTable();
       initProjectionSelector();
       renderProcessingTable();
@@ -409,7 +409,7 @@
 
       let currentDate = new Date(item.final_action_date);
       const velocity = item.monthly_velocity_days || 10;
-      const monthNames = ["Nov 2024", "Dec 2024", "Jan 2025", "Feb 2025", "Mar 2025", "Apr 2025"];
+      const monthNames = ["Nov 2026", "Dec 2026", "Jan 2027", "Feb 2027", "Mar 2027", "Apr 2027"];
 
       monthNames.forEach((m, idx) => {
         currentDate.setDate(currentDate.getDate() + velocity);
@@ -450,14 +450,12 @@
       const approved = new Date(approvedVal);
       const current = new Date(currentVal);
 
-      // Pending duration in days
       const pendingTimeMs = approved - filed;
       if (pendingTimeMs < 0) {
         output.innerHTML = `<span class="text-rose-400">Error: Approval date cannot precede filing date.</span>`;
         return;
       }
 
-      // Age at visa availability
       const ageAtCurrentMs = current - dob;
       const cspaAgeMs = ageAtCurrentMs - pendingTimeMs;
       const cspaAgeYears = (cspaAgeMs / (1000 * 60 * 60 * 24 * 365.25)).toFixed(2);
@@ -498,7 +496,7 @@
       container.innerHTML = '';
       const forms = bulletinData.forms_fees || fallbackData.forms_fees;
 
-      forms.forEach((form, idx) => {
+      forms.forEach((form) => {
         const div = document.createElement('label');
         div.className = "flex items-center justify-between p-3.5 rounded-xl border border-slate-200 hover:border-blue-400 bg-slate-50/50 cursor-pointer transition-all";
         div.innerHTML = `
