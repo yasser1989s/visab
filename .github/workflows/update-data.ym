@@ -1,20 +1,20 @@
-name: Check & Update Visa Bulletin
+name: Check, Parse & Generate AI Visa Bulletin
 
 on:
   schedule:
-    # Runs daily at 14:00 UTC between days 8 and 18 of every month
-    - cron: '0 14 8-18 * *'
+    # Runs twice daily at 13:00 and 19:00 UTC between days 8 and 18 of each month
+    - cron: '0 13,19 8-18 * *'
   workflow_dispatch:
 
 permissions:
   contents: write
 
 jobs:
-  update-bulletin:
+  run-pipeline:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Repository
+      - name: Checkout Code
         uses: actions/checkout@v4
 
       - name: Setup Python
@@ -26,13 +26,15 @@ jobs:
         run: |
           pip install requests beautifulsoup4
 
-      - name: Execute Scraper
+      - name: Run Scraper & AI Insights
+        env:
+          AI_API_KEY: ${{ secrets.AI_API_KEY }}
         run: |
           python scripts/scraper.py
 
-      - name: Commit and Push Changes
+      - name: Commit and Push Updated Data
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add data/current_bulletin.json
-          git diff --quiet && git diff --staged --quiet || (git commit -m "Auto-update Visa Bulletin records [skip ci]" && git push)
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Auto-sync bulletin dates & AI forecasts [skip ci]" && git push)
