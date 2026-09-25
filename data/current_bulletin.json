@@ -1,6 +1,32 @@
 {
   "bulletin_month": "October 2026",
   "next_release_expected": "November 8 - 14, 2026",
+  "ai_insights": [
+    {
+      "category": "EB-3 (Skilled Workers & Professionals)",
+      "trend": "Active Progression",
+      "summary": "Final Action Date stands at September 1, 2023, while Chart B allows earlier filing. Moderate forward momentum expected with start of the new fiscal quota.",
+      "actionable_tip": "If your priority date is prior to September 1, 2023, ensure medical exams (Form I-693) and affidavit documentation are prepped for final adjudication."
+    },
+    {
+      "category": "F2A (Spouses & Minor Children of LPRs)",
+      "trend": "Bullish Momentum",
+      "summary": "High quota allocation at fiscal year open continues to push filing dates aggressively, keeping family reunification priority high.",
+      "actionable_tip": "Check USCIS monthly announcement to confirm whether Chart B (Dates for Filing) is active for concurrent AOS filings."
+    },
+    {
+      "category": "EB-2 (Advanced Degree / NIW)",
+      "trend": "Steady Movement",
+      "summary": "Maintaining consistent movement (+15 to 30 days/month) across general worldwide chargeability.",
+      "actionable_tip": "Prepare concurrent filing packages as soon as dates align with USCIS monthly filing acceptance policy."
+    },
+    {
+      "category": "EB-1 (Priority Workers)",
+      "trend": "Current (Available)",
+      "summary": "Worldwide EB-1 demand remains fully within statutory limits with immediate visa availability.",
+      "actionable_tip": "Simultaneous I-140/I-485 concurrent filing remains open without priority date waiting queues."
+    }
+  ],
   "family_based": {
     "F1": {
       "name": "F1 - Unmarried Sons and Daughters of U.S. Citizens",
@@ -55,8 +81,8 @@
     },
     "EB3": {
       "name": "EB-3 - Skilled Workers & Professionals",
-      "final_action_date": "2024-01-15",
-      "filing_date": "2024-06-01",
+      "final_action_date": "2023-09-01",
+      "filing_date": "2024-03-01",
       "monthly_velocity_days": 30,
       "status": "Moderate Pace"
     },
