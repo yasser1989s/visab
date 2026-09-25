@@ -5,78 +5,79 @@ import requests
 from bs4 import BeautifulSoup
 from datetime import datetime
 
-DOS_MAIN_URL = "https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin.html"
+DOS_ROOT = "https://travel.state.gov"
+DOS_PORTAL = "https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin.html"
 DATA_FILE = "data/current_bulletin.json"
 AI_API_KEY = os.getenv("AI_API_KEY")
 
-HEADERS = {
-    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36"
+MONTH_MAP = {
+    "JAN": "01", "FEB": "02", "MAR": "03", "APR": "04",
+    "MAY": "05", "JUN": "06", "JUL": "07", "AUG": "08",
+    "SEP": "09", "OCT": "10", "NOV": "11", "DEC": "12"
 }
 
-def parse_bulletin_table(table):
-    """Extract preference categories and their cut-off dates from HTML table"""
+def clean_date(val):
+    val = val.strip().upper()
+    if val in ["C", "CURRENT"]:
+        return "Current"
+    if val in ["U", "UNAUTHORIZED"]:
+        return "Unavailable"
+    
+    # Matches patterns like 01SEP23, 01-SEP-2023, or 1SEP23
+    m = re.match(r"^(\d{1,2})[- ]?([A-Z]{3})[- ]?(\d{2,4})$", val)
+    if m:
+        day = m.group(1).zfill(2)
+        mon = MONTH_MAP.get(m.group(2)[:3], "01")
+        yr = m.group(3)
+        if len(yr) == 2:
+            yr = f"20{yr}" if int(yr) < 50 else f"19{yr}"
+        return f"{yr}-{mon}-{day}"
+    return val
+
+def parse_dos_table(table):
     results = {}
     if not table:
         return results
-    
-    rows = table.find_all("tr")
-    for r in rows:
-        cols = [c.get_text(strip=True) for c in r.find_all(["td", "th"])]
+    for row in table.find_all("tr"):
+        cols = [c.get_text(strip=True) for c in row.find_all(["td", "th"])]
         if len(cols) >= 2:
             cat = cols[0].upper().replace("-", "").strip()
-            date_val = cols[1].strip()
-            
-            # Map standard abbreviations
-            if "F1" in cat: results["F1"] = date_val
-            elif "F2A" in cat: results["F2A"] = date_val
-            elif "F2B" in cat: results["F2B"] = date_val
-            elif "F3" in cat: results["F3"] = date_val
-            elif "F4" in cat: results["F4"] = date_val
-            elif "1ST" in cat or "EB1" in cat: results["EB1"] = date_val
-            elif "2ND" in cat or "EB2" in cat: results["EB2"] = date_val
-            elif "3RD" in cat and "OTHER" not in cat: results["EB3"] = date_val
-            elif "OTHER WORKERS" in cat: results["EB3_Other"] = date_val
-            elif "4TH" in cat or "EB4" in cat: results["EB4"] = date_val
-            elif "5TH" in cat or "EB5" in cat: results["EB5_Unreserved"] = date_val
-            
+            date_clean = clean_date(cols[1])
+
+            if "F1" in cat: results["F1"] = date_clean
+            elif "F2A" in cat: results["F2A"] = date_clean
+            elif "F2B" in cat: results["F2B"] = date_clean
+            elif "F3" in cat: results["F3"] = date_clean
+            elif "F4" in cat: results["F4"] = date_clean
+            elif "1ST" in cat or "EB1" in cat: results["EB1"] = date_clean
+            elif "2ND" in cat or "EB2" in cat: results["EB2"] = date_clean
+            elif "3RD" in cat and "OTHER" not in cat: results["EB3"] = date_clean
+            elif "OTHER WORKERS" in cat: results["EB3_Other"] = date_clean
+            elif "4TH" in cat or "EB4" in cat: results["EB4"] = date_clean
+            elif "5TH" in cat or "EB5" in cat: results["EB5_Unreserved"] = date_clean
     return results
 
 def generate_ai_insights(bulletin_month, dates_summary):
-    """Generate professional AI immigration forecasts using Gemini API"""
     if not AI_API_KEY:
-        print("[!] Warning: AI_API_KEY not found in secrets. Using default analytical forecast.")
-        return [
-            {
-                "category": "F2A (Spouses & Minors of LPRs)",
-                "trend": "Bullish (Rapid Movement)",
-                "summary": "High quota allocation at start of fiscal year accelerates Chart B filings.",
-                "actionable_tip": "File I-485 concurrently if your priority date precedes the filing cut-off."
-            },
-            {
-                "category": "EB-2 / EB-3 (Skilled & NIW)",
-                "trend": "Moderate Progression",
-                "summary": "Quarterly allocation limits maintain steady advancement (+15 to 30 days/month).",
-                "actionable_tip": "Audit premium processing availability for underlying I-140 petitions."
-            }
-        ]
+        print("[!] Note: AI_API_KEY not set. Retaining analytical baseline.")
+        return []
     
     url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key={AI_API_KEY}"
     prompt = f"""
-    Act as a veteran US Immigration Data Analyst. The new Department of State Visa Bulletin for '{bulletin_month}' has just been published.
+    Act as a senior US Immigration Data Scientist. The official Visa Bulletin for '{bulletin_month}' has just published.
     Here is the cut-off dates data: {json.dumps(dates_summary)}
 
-    Generate a structured JSON array with 4 sharp analytical forecasts for upcoming months.
-    Output strictly valid JSON with this exact schema (no markdown fences, just pure JSON):
+    Generate 4 structured analytical insights for upcoming months.
+    Output strictly valid JSON (no markdown formatting, no backticks, just raw json):
     [
       {{
         "category": "Category name",
-        "trend": "Rapid / Steady / Retrogression Risk",
-        "summary": "Brief 1-2 sentence analytical forecast on what will happen in the coming 3-6 months",
-        "actionable_tip": "Direct advice for applicants regarding I-485 or consular processing"
+        "trend": "Bullish / Steady Progression / Retrogression Risk / Current",
+        "summary": "1-2 sentence analytical forecast on movement for next 3-6 months based on quota limits",
+        "actionable_tip": "Direct actionable legal filing strategy for applicants"
       }}
     ]
     """
-    
     try:
         res = requests.post(url, json={"contents": [{"parts": [{"text": prompt}]}]}, timeout=20)
         res_json = res.json()
@@ -84,82 +85,78 @@ def generate_ai_insights(bulletin_month, dates_summary):
         cleaned = re.sub(r'```json|```', '', raw_text).strip()
         return json.loads(cleaned)
     except Exception as e:
-        print(f"[!] AI generation encountered an error: {e}")
+        print(f"[!] AI generation error: {e}")
         return []
 
-def run_pipeline():
-    print("[*] Checking for latest Visa Bulletin...")
+def run():
+    print("[*] Checking Department of State Visa Bulletin portal...")
+    headers = {"User-Agent": "Mozilla/5.0"}
     try:
-        resp = requests.get(DOS_MAIN_URL, headers=HEADERS, timeout=15)
-        resp.raise_for_status()
+        res = requests.get(DOS_PORTAL, headers=headers, timeout=15)
+        soup = BeautifulSoup(res.text, "html.parser")
     except Exception as e:
-        print(f"[!] Failed to fetch portal: {e}")
+        print(f"[!] Portal fetch error: {e}")
         return
 
-    soup = BeautifulSoup(resp.text, "html.parser")
-    latest_link = soup.find("a", string=lambda t: t and "visa bulletin for" in t.lower())
-    
-    if not latest_link:
-        print("[-] No bulletin links found.")
+    link = soup.find("a", string=lambda t: t and "visa bulletin for" in t.lower())
+    if not link:
+        print("[-] Bulletin link not found.")
         return
 
-    bulletin_title = latest_link.get_text(strip=True)
-    bulletin_href = latest_link["href"]
-    if not bulletin_href.startswith("http"):
-        bulletin_href = "https://travel.state.gov" + bulletin_href
+    bulletin_name = link.get_text(strip=True)
+    bulletin_url = link["href"]
+    if not bulletin_url.startswith("http"):
+        bulletin_url = DOS_ROOT + bulletin_url
 
-    print(f"[+] Found bulletin: {bulletin_title} -> {bulletin_href}")
+    print(f"[+] Found bulletin: {bulletin_name} -> {bulletin_url}")
 
-    # Scrape actual bulletin page
-    b_resp = requests.get(bulletin_href, headers=HEADERS, timeout=15)
-    b_soup = BeautifulSoup(b_resp.text, "html.parser")
-    tables = b_soup.find_all("table")
+    try:
+        b_res = requests.get(bulletin_url, headers=headers, timeout=15)
+        b_soup = BeautifulSoup(b_res.text, "html.parser")
+        tables = b_soup.find_all("table")
+    except Exception as e:
+        print(f"[!] Error fetching bulletin page: {e}")
+        return
 
-    # Read existing database
-    if os.path.exists(DATA_FILE):
-        with open(DATA_FILE, "r", encoding="utf-8") as f:
-            data = json.load(f)
-    else:
-        data = {"family_based": {}, "employment_based": {}}
+    if not os.path.exists(DATA_FILE):
+        return
 
-    data["bulletin_month"] = bulletin_title
+    with open(DATA_FILE, "r", encoding="utf-8") as f:
+        data = json.load(f)
+
+    data["bulletin_month"] = bulletin_name
     data["last_scraped_at"] = datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S UTC")
 
-    # If new tables exist, extract cut-off dates
     if len(tables) >= 4:
-        chart_a_family = parse_bulletin_table(tables[0])
-        chart_b_family = parse_bulletin_table(tables[1])
-        chart_a_emp = parse_bulletin_table(tables[2])
-        chart_b_emp = parse_bulletin_table(tables[3])
+        f_final = parse_dos_table(tables[0])
+        f_filing = parse_dos_table(tables[1])
+        e_final = parse_dos_table(tables[2])
+        e_filing = parse_dos_table(tables[3])
 
-        for k, v in chart_a_family.items():
+        for k, v in f_final.items():
             if k in data.get("family_based", {}):
                 data["family_based"][k]["final_action_date"] = v
-        for k, v in chart_b_family.items():
+        for k, v in f_filing.items():
             if k in data.get("family_based", {}):
                 data["family_based"][k]["filing_date"] = v
-        for k, v in chart_a_emp.items():
+        for k, v in e_final.items():
             if k in data.get("employment_based", {}):
                 data["employment_based"][k]["final_action_date"] = v
-        for k, v in chart_b_emp.items():
+        for k, v in e_filing.items():
             if k in data.get("employment_based", {}):
                 data["employment_based"][k]["filing_date"] = v
 
-    # Trigger AI analysis
-    print("[*] Generating AI immigration projections...")
-    ai_insights = generate_ai_insights(bulletin_title, {
+    ai_results = generate_ai_insights(bulletin_name, {
         "family": {k: v.get("final_action_date") for k, v in data.get("family_based", {}).items()},
         "employment": {k: v.get("final_action_date") for k, v in data.get("employment_based", {}).items()}
     })
-    
-    if ai_insights:
-        data["ai_insights"] = ai_insights
+    if ai_results:
+        data["ai_insights"] = ai_results
 
-    os.makedirs(os.path.dirname(DATA_FILE), exist_ok=True)
     with open(DATA_FILE, "w", encoding="utf-8") as f:
         json.dump(data, f, indent=2, ensure_ascii=False)
-        
-    print("[✓] Scraping and AI analysis completed successfully.")
+
+    print("[✓] Automatically updated current_bulletin.json successfully.")
 
 if __name__ == "__main__":
-    run_pipeline()
+    run()
